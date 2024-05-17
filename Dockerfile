@@ -4,7 +4,7 @@ USER nobody
 
 WORKDIR /app
 
-COPY server.js package.json package-lock.json ./
+COPY server.js package.json ./
 
 RUN npm install
 
