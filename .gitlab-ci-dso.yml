@@ -26,7 +26,7 @@ read_secret:
 docker-build:
   variables:
     WORKING_DIR: ""
-    IMAGE_NAMES: 
+    IMAGE_NAMES: front-test-krakend 
   stage: docker-build
   extends:
     - .kaniko:simple-build-push
