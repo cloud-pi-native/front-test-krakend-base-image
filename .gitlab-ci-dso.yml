@@ -5,6 +5,7 @@ include:
   - project: $CATALOG_PATH
     file: kaniko-ci.yml
     ref: main
+  - local: "/includes/node.yml"
 
 default:
   image: alpine:latest
@@ -16,12 +17,23 @@ variables:
 
 stages:
   - read-secret
+  - package-app
   - docker-build
 
 read_secret:
   stage: read-secret
   extends:
     - .vault:read_secret
+
+package-app:
+  variables:
+    BUILD_IMAGE_NAME: docker.io/node:16.19.0-alpine3.16
+    NODE_INSTALL_COMMAND: npm install
+    NODE_BUILD_COMMAND: npm run build
+    WORKING_DIR: "."
+  stage: package-app
+  extends:
+    - .node:build
 
 docker-build:
   variables:
