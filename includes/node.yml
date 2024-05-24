@@ -8,7 +8,7 @@
     - cd $WORKING_DIR
     - echo "export BUILD_VAR_SENTRY_RELEASE=$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA" >> .variables
     - $NODE_INSTALL_COMMAND
-    - $NODE_BUILD_COMMAND
+#    - $NODE_BUILD_COMMAND
   artifacts:
     paths:
       - $WORKING_DIR/
