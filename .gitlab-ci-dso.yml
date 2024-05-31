@@ -17,7 +17,7 @@ variables:
 
 stages:
   - read-secret
-  - package-app
+    #  - package-app
   - docker-build
 
 read_secret:
