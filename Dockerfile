@@ -1,6 +1,6 @@
 FROM node:16-slim
 
-USER nobody
+USER node
 
 WORKDIR /app
 
