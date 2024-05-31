@@ -43,11 +43,12 @@ app.get('/test-krakend', async (req, res) => {
     });
     if (!response.ok) throw new Error(`HTTP status ${response.status}`);
     const data = await response.text();
-    res.send(HTMLResponse(`Félicitation ! Vous avez réussi à simuler la Communication mTLS avec l'API Gateway INES. Données reçues: ${data}`, true));
+    const formattedData = JSON.stringify(JSON.parse(data), null, 4); // Parse and format the JSON data
+    res.send(HTMLResponse(`Félicitation ! Vous avez réussi à simuler la Communication mTLS avec l'API Gateway INES. \nDonnées reçues: \n${formattedData}`, true));
 //   res.send(data);
   } catch (error) {
     console.error('Error:', error);
-    res.send(HTMLResponse(`Echec de la connexion vers le service KrakenD. Error: ${error.message}`, false));
+    res.send(HTMLResponse(`Echec de la connexion vers le service KrakenD. \nError: \n${error.message}`, false));
 //    res.status(500).send('Failed to connect to Krakend');
   }
 });
